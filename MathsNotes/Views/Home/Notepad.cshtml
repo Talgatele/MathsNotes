@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Notepad";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<h2>Notepad</h2>
+<div id="outer-div" class="divView">    
+    <textarea id="input-pane" style="background-color:white;height:100%;width:50%;max-width:50%;min-width:50%;float:left;min-height:500px;resize:none;">Anything you type into the left hand textarea will appear in the right.</textarea>
+    <textarea id="output-pane" style="background-color:white;width:50%;max-width:50%;float:left;min-width:50%;min-height:500px; resize:none;" readonly>Anything you type into the left hand textarea will appear in the right.</textarea>
+</div>
