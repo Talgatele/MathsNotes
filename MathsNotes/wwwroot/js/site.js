@@ -3,12 +3,18 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    console.log("loaded");
 
+    //mirror text in input textarea to output textarea on each keypress
     $("#input-pane").keyup(function () {
-        $("#output-pane").text($("#input-pane").val());
+        var inputText = $("#input-pane").val();
+        $("#output-pane").text(inputText);
+
+        if (inputText.length > 0) {
+            $.post("/Notepad/Parse", { inputText: inputText });
+        }
     });
 
+    //grow the length of the textareas, and shrink based on the amount of content
     $('#input-pane').on('keyup paste', function () {
         var $inputPane = $(this);
         var $outputPane = $("#output-pane");
@@ -26,4 +32,4 @@ $(document).ready(function () {
             $outputPane.height(this.scrollHeight - offset);
         }
     });
-});    
+});   
