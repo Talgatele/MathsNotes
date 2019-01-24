@@ -1,14 +1,76 @@
 ﻿@model Notes.Web.Models.Notepad.NotepadVM
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Notepad";
 }
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']]
+        }
+    });
+</script>
+
+<script type="text/javascript"
+    src ="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <h2>Notepad</h2>
+
+<h3>LaTeX</h3>
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+<h3>MathML</h3>
+<p>
+    Let's consider <math><mi>a</mi><mo>≠</mo><mn>0</mn></math>.
+</p>
+<p>
+    <mspace width="thinmathspace">
+        <mrow>
+            <mi>x</mi>
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mrow>
+                        <mo>-</mo>
+                        <mi>b</mi>
+                    </mrow>
+                    <mo>&PlusMinus;</mo>
+                    <msqrt>
+                        <mrow>
+                            <msup>
+                                <mi>b</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>-</mo>
+                            <mrow>
+                                <mn>4</mn>
+                                <mo>&InvisibleTimes;</mo>
+                                <mi>a</mi>
+                                <mo>&InvisibleTimes;</mo>
+                                <mi>c</mi>
+                            </mrow>
+                        </mrow>
+                    </msqrt>
+                </mrow>
+                <mrow>
+                    <mn>2</mn>
+                    <mo>&InvisibleTimes;</mo>
+                    <mi>a</mi>
+                </mrow>
+            </mfrac>
+        </mrow>
+    </mspace>
+</p>
 
 <div id="outer-div" class="divView">
     <textarea id="input-pane" style="background-color:white;height:100%;width:50%;max-width:50%;min-width:50%;float:left;min-height:500px;resize:none;">@Model.InputText</textarea>
-    <textarea id="output-pane" style="background-color:white;width:50%;max-width:50%;float:left;min-width:50%;min-height:500px; resize:none;" readonly>@Model.OutputText</textarea>
+   
+    <div id="output-pane" style="background-color:white;width:50%;max-width:50%;float:left;min-width:50%;min-height:50%;resize:none;">
+        @Model.OutputText
+    </div>
 </div>

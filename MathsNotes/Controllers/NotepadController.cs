@@ -16,25 +16,16 @@ namespace Notes.Web.Controllers
                 OutputText = "Anything you type into the left hand textarea will appear in the right."
             };
 
+            //NotepadVM notepad = new NotepadVM()
+            //{
+            //    InputText = "$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
+            //    OutputText = "$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
+            //};
+
             ViewData["Message"] = "Notepad";
 
             return View(notepad);
         }
-
-        //public IEnumerable<Token> Parse(string text)
-        //{
-        //    StringReader reader = new StringReader(text);
-        //    List<Token> tokens = new List<Token>();
-
-        //    while (reader.Peek() != -1)
-        //    {
-        //        //if whitespace
-
-        //        //if type function sin,cos,etc
-        //    }
-
-        //    return tokens;
-        //}
 
         public IActionResult Parse(string inputText)
         {

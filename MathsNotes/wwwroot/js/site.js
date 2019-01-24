@@ -1,8 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     //mirror text in input textarea to output textarea on each keypress
     $("#input-pane").keyup(function () {
@@ -12,6 +8,9 @@ $(document).ready(function () {
         if (inputText.length > 0) {
             $.post("/Notepad/Parse", { inputText: inputText });
         }
+
+        var math = document.getElementById("output-pane");
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
     });
 
     //grow the length of the textareas, and shrink based on the amount of content
@@ -32,4 +31,6 @@ $(document).ready(function () {
             $outputPane.height(this.scrollHeight - offset);
         }
     });
+
+
 });   
