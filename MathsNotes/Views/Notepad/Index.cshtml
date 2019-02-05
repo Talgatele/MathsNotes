@@ -14,63 +14,31 @@
     });
 </script>
 
-<script type="text/javascript"
-    src ="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-<h2>Notepad</h2>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; Close</a>
+    <p class="navText">Wiki type text stuff goes here</p>
+</div>
 
-<h3>LaTeX</h3>
-When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+<div id="main">
+    <h2>Notepad</h2>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 
-<h3>MathML</h3>
-<p>
-    Let's consider <math><mi>a</mi><mo>≠</mo><mn>0</mn></math>.
-</p>
-<p>
-    <mspace width="thinmathspace">
-        <mrow>
-            <mi>x</mi>
-            <mo>=</mo>
-            <mfrac>
-                <mrow>
-                    <mrow>
-                        <mo>-</mo>
-                        <mi>b</mi>
-                    </mrow>
-                    <mo>&PlusMinus;</mo>
-                    <msqrt>
-                        <mrow>
-                            <msup>
-                                <mi>b</mi>
-                                <mn>2</mn>
-                            </msup>
-                            <mo>-</mo>
-                            <mrow>
-                                <mn>4</mn>
-                                <mo>&InvisibleTimes;</mo>
-                                <mi>a</mi>
-                                <mo>&InvisibleTimes;</mo>
-                                <mi>c</mi>
-                            </mrow>
-                        </mrow>
-                    </msqrt>
-                </mrow>
-                <mrow>
-                    <mn>2</mn>
-                    <mo>&InvisibleTimes;</mo>
-                    <mi>a</mi>
-                </mrow>
-            </mfrac>
-        </mrow>
-    </mspace>
-</p>
-
-<div id="outer-div" class="divView">
-    <textarea id="input-pane" style="background-color:white;height:100%;width:50%;max-width:50%;min-width:50%;float:left;min-height:500px;resize:none;">@Model.InputText</textarea>
-   
-    <div id="output-pane" style="background-color:white;width:50%;max-width:50%;float:left;min-width:50%;min-height:50%;resize:none;">
-        @Model.OutputText
+    <div id="outer-div" class="divView">
+        <textarea class="inputPane" id="input-pane">@Model.InputText</textarea>
+        <div class="outputPane" id="output-pane">@Model.OutputText</div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>

@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    setDivHeight();
 
     //mirror text in input textarea to output textarea on each keypress
     $("#input-pane").keyup(function () {
@@ -15,7 +16,11 @@
 
     //grow the length of the textareas, and shrink based on the amount of content
     $('#input-pane').on('keyup paste', function () {
-        var $inputPane = $(this);
+        setDivHeight();
+    });
+
+    function setDivHeight() {
+        var $inputPane = $('#input-pane');
         var $outputPane = $("#output-pane");
         var offset = $inputPane.innerHeight() - $inputPane.height();
 
@@ -30,7 +35,5 @@
             $inputPane.height(this.scrollHeight - offset);
             $outputPane.height(this.scrollHeight - offset);
         }
-    });
-
-
+    }
 });   
