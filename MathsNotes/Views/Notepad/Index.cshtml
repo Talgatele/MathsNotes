@@ -1,46 +1,24 @@
 ﻿@model Notes.Web.Models.Notepad.NotepadVM
 
-@{
-    ViewData["Title"] = "Notepad";
-}
+@{ViewData["Title"] = "Notepad";}
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [['$','$'], ['\\(','\\)']]
-        }
-    });
-</script>
-
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>-->
+<!--import javascript required for asciimath & mathjax, configured for asciimath-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
 <script type="text/javascript" src="~/js/ASCIIMathML.js"></script>
 
+<!--Render sidenav and wiki partial view content-->
 <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; Close</a>
-    <p class="navText">Wiki type text stuff goes here</p>
+    @Html.Partial("_Wiki");
 </div>
 
+<!--page layout-->
 <div id="main">
     <h2>Notepad</h2>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <span class="navBtn" id="navToggleBtn">&#9776; Open Wiki</span>
 
     <div id="outer-div" class="divView">
+        <br />
         <textarea class="inputPane" id="input-pane">@Model.InputText</textarea>
         <div class="outputPane" id="output-pane">@Model.OutputText</div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>

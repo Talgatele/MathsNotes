@@ -62,8 +62,6 @@ var asciimath = {};
         document.write("<?import namespace=\"m\" implementation=\"#mathplayer\"?>");
     }
 
-    alert("Loaded");
-
     // Add a stylesheet, replacing any previous custom stylesheet (adapted from TW)
     function setStylesheet(s) {
         var id = "AMMLcustomStyleSheet";

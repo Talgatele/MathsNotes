@@ -47,10 +47,12 @@ textarea {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #DCDCDC;
+    background-color: white;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    box-shadow: 5px 10px 5px #888;
+    overflow-y: scroll;
 }
 
 .sidenav a {
@@ -85,6 +87,11 @@ textarea {
     color:black;
 }
 
+.navBtn {
+    font-size:30px;
+    cursor:pointer;
+}
+
 .inputPane {
     background-color: white;
     border-color: gray;
@@ -95,6 +102,9 @@ textarea {
     float: left;
     min-height: 500px;
     resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: -5px 10px 5px #888;
 }
 
 .outputPane {
@@ -107,6 +117,6 @@ textarea {
     min-width: 50%;
     min-height: 50%;
     resize: none;
-    box-shadow: 5px 10px 5px #888 ;
-    white-space: pre;
+    box-shadow: 5px 10px 5px #888;
+    white-space: pre-wrap;
 }

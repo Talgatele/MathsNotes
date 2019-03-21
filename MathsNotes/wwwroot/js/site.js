@@ -1,7 +1,8 @@
 ﻿$(document).ready(function () {
     setDivHeight();
+    var navOpen = false;
 
-    //mirror text in input textarea to output textarea on each keypress
+    //mirror text in input textarea to output textarea on each key up action
     $("#input-pane").keyup(function () {
         var inputText = $("#input-pane").val();
         $("#output-pane").text(inputText);
@@ -15,25 +16,31 @@
     });
 
     //grow the length of the textareas, and shrink based on the amount of content
-    $('#input-pane').on('keyup paste', function () {
+    $('#input-pane').on('input paste', function () {
         setDivHeight();
     });
 
+    //sets scroll height
     function setDivHeight() {
-        var $inputPane = $('#input-pane');
-        var $outputPane = $("#output-pane");
-        var offset = $inputPane.innerHeight() - $inputPane.height();
+        var scroll_height = $("#input-pane").get(0).scrollHeight;
 
-        if ($inputPane.innerHeight < this.scrollHeight) {
-            //Grow the field if scroll height is smaller
-            $inputPane.height(this.scrollHeight - offset);
-            $outputPane.height(this.scrollHeight - offset);
-        } else {
-            //Shrink the field and then re-set it to the scroll height in case it needs to shrink
-            $inputPane.height(1);
-            $outputPane.height(1);
-            $inputPane.height(this.scrollHeight - offset);
-            $outputPane.height(this.scrollHeight - offset);
-        }
+        $("#input-pane").css('height', scroll_height + 'px');
+        $("#output-pane").css('height', scroll_height + 'px');
     }
+
+    ///toggles the nav wiki to be open or closed
+    $("#navToggleBtn").on('click', function () {
+       if (navOpen) {
+            $("#mySidenav").css('width', '0px');
+            $("#main").css('marginLeft', '0px');
+            $("#navToggleBtn").text('☰ Open Wiki');
+            navOpen = false;
+        }
+        else {
+            $("#mySidenav").css('width', '20%');
+            $("#main").css('marginLeft', '10%');
+            $("#navToggleBtn").text('☰ Close Wiki');
+            navOpen = true;
+        }
+    });
 });   
