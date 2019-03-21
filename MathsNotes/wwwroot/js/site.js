@@ -37,7 +37,7 @@
             navOpen = false;
         }
         else {
-            $("#mySidenav").css('width', '23%');
+            $("#mySidenav").css('width', '390px');
             $("#main").css('marginLeft', '10%');
             $("#navToggleBtn").text('☰ Close Wiki');
             navOpen = true;

@@ -24,7 +24,7 @@ namespace Notes.Web.Controllers
                                 "Logic symbols can also be used, so notes can be written for non mathematical purposes too.\n\n" +
                                 "`R1: a => b`\n" +
                                 "`R2: => notb`\n" +
-                                "`R1 > R2` b provable? No.\n\n";
+                                "`R1 > R2` b provable? `color(red)(\"No.\")`\n\n";
 
             NotepadVM notepad = new NotepadVM()
             {
@@ -37,7 +37,37 @@ namespace Notes.Web.Controllers
 
             return View(notepad);
         }
+        /// <summary>
+        /// Called by site.js on keyup, parses the text from the input text area
+        /// Returns the parsed, and translated text to display in the output div
+        /// </summary>
+        /// <param name="inputText">The text contained in the input textarea</param>
+        /// <returns>View(NotepadVM Model) The webpage, and the input and output text to display</returns>
+        public IActionResult Parse(string inputText)
+        {
+            //StringReader reader = new StringReader(inputText);
+            //List<Token> tokens = new List<Token>();
 
+            //while (reader.Peek() != -1)
+            //{
+            //    //if whitespace
+
+            //    //if type function sin,cos,etc
+            //}
+
+            NotepadVM notepad = new NotepadVM()
+            {
+                InputText = inputText,
+                OutputText = inputText
+            };
+
+            return View("Index", notepad);
+        }
+
+        /// <summary>
+        /// Populate all of the wiki symbols
+        /// </summary>
+        /// <returns>List<SymbolSetsVM> the entire list of symbol sets available</returns>
         private List<SymbolSetsVM> GetSymbolSets()
         {
             var symbolSets = new List<SymbolSetsVM>();
@@ -311,33 +341,6 @@ namespace Notes.Web.Controllers
             symbolSets.Add(funcs);
 
             return symbolSets;
-        }
-
-        /// <summary>
-        /// Called by site.js on keyup, parses the text from the input text area
-        /// Returns the parsed, and translated text to display in the output div
-        /// </summary>
-        /// <param name="inputText">The text contained in the input textarea</param>
-        /// <returns>View(NotepadVM Model) The webpage, and the input and output text to display</returns>
-        public IActionResult Parse(string inputText)
-        {
-            //StringReader reader = new StringReader(inputText);
-            //List<Token> tokens = new List<Token>();
-
-            //while (reader.Peek() != -1)
-            //{
-            //    //if whitespace
-
-            //    //if type function sin,cos,etc
-            //}
-
-            NotepadVM notepad = new NotepadVM()
-            {
-                InputText = inputText,
-                OutputText = inputText
-            };
-
-            return View("Index", notepad);
         }
     }
 }

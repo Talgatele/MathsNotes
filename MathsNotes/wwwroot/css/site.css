@@ -68,7 +68,7 @@ textarea {
     color: #f1f1f1;
 }
 
-.sidenav .closebtn {
+/*.sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -76,15 +76,20 @@ textarea {
     margin-left: 50px;
     font-size: 30px;
     cursor: pointer
-}
+}*/
 
 #main {
     transition: margin-left .5s;
     padding: 16px;
 }
 
-.navText {
+.navTitleText {
     color:black;
+    font-size:18px
+}
+.navText{
+    color:black;
+    font-size:14px;
 }
 
 .navBtn {
