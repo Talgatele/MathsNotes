@@ -43,4 +43,19 @@
             navOpen = true;
         }
     });
+
+    $("#printBtn").on('click', function () {
+        var printWindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        printWindow.document.write('<html><head><title>' + document.title + '</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write('<h1>' + document.title + '</h1>');
+        printWindow.document.write(document.getElementById('output-pane').innerHTML);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close(); // necessary for IE >= 10
+        printWindow.focus(); // necessary for IE >= 10*/
+
+        printWindow.print();
+        printWindow.close();
+    });
 });   
